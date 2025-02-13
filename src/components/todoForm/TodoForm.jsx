@@ -35,7 +35,7 @@ function TodoForm({ addTodo }) {
         id="todo"
         value={input}
         placeholder="Add A ToDo"
-        className="rounded-xs border border-slate-500 p-2 focus:outline-orange-300 "
+        className="rounded-lg border border-slate-500 p-2 focus:outline-orange-300 "
         onChange={handleChange}
       />
       <button type="submit" className="ml-5 bg-amber-400 p-2 rounded-md">
