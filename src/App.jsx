@@ -20,7 +20,7 @@ function App() {
     <Container>
       <Title />
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} setTodos={setTodos}/>
+      <TodoList todos={todos} setTodos={setTodos} />
     </Container>
   );
 }
