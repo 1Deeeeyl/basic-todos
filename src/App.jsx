@@ -1,33 +1,27 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import Container from "./components/container/Container";
+import Title from "./components/title/Title";
+import TodoForm from "./components/todoForm/TodoForm";
+import TodoList from "./components/todoList/TodoList";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  // Function to add a new todo
+  const addTodo = (todo) => {
+    if (!todo.text.trim()) {
+      return;
+    }
+    console.log("Todo received in App:", todo);
+    setTodos((prevTodos) => [todo, ...prevTodos]);
+  };
 
   return (
-    <div className="bg-amber-400  container mx-auto">
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className="text-8xl">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p className="bg-red-500">
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Container>
+      <Title />
+      <TodoForm addTodo={addTodo} />
+      <TodoList todos={todos} setTodos={setTodos}/>
+    </Container>
   );
 }
 
