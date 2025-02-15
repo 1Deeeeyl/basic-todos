@@ -61,34 +61,38 @@ function TodoList({ todos, setTodos }) {
             className="flex flex-row items-center justify-between bg-gray-200 h-fit p-3 w-full rounded-md"
           >
             <span className="flex flex-row gap-5 items-center">
-              {todo.isDone ?  <svg
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 cursor-pointer"
-                onClick={() => handleTask(todo.id)}
-              >
-                <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" />
-                <path
-                  d="m12 2a10 10 0 1 0 10 10 10 10 0 0 0 -10-10zm4.3 7.61-4.57 6a1 1 0 0 1 -.79.39 1 1 0 0 1 -.79-.38l-2.44-3.11a1 1 0 0 1 1.58-1.23l1.63 2.08 3.78-5a1 1 0 1 1 1.6 1.22z"
-                  fill="#EFB036"
-                />
-              </svg>: <svg
-                width="24"
-                height="24"
-                strokeWidth="1.5"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5 cursor-pointer"
-                onClick={() => handleTask(todo.id)}
-              >
-                <path
-                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>}
+              {todo.isDone ? (
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 cursor-pointer"
+                  onClick={() => handleTask(todo.id)}
+                >
+                  <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" />
+                  <path
+                    d="m12 2a10 10 0 1 0 10 10 10 10 0 0 0 -10-10zm4.3 7.61-4.57 6a1 1 0 0 1 -.79.39 1 1 0 0 1 -.79-.38l-2.44-3.11a1 1 0 0 1 1.58-1.23l1.63 2.08 3.78-5a1 1 0 1 1 1.6 1.22z"
+                    fill="#EFB036"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  width="24"
+                  height="24"
+                  strokeWidth="1.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 cursor-pointer"
+                  onClick={() => handleTask(todo.id)}
+                >
+                  <path
+                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
               <li
                 onClick={() => handleTask(todo.id)}
                 className={`${
@@ -104,7 +108,7 @@ function TodoList({ todos, setTodos }) {
               <svg
                 viewBox="0 0 576 512"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 box-border cursor-pointer"
+                className="h-5 w-5 box-border cursor-pointer fill-slate-800"
                 onClick={() => handleEditClick(todo)}
               >
                 <path d="m402.3 344.9 32-32c5-5 13.7-1.5 13.7 5.7v145.4c0 26.5-21.5 48-48 48h-352c-26.5 0-48-21.5-48-48v-352c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3h-241.5v352h352v-113.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8-262.6 262.6-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4 262.6-262.6c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zm-98.8 30.9-58.1-58.1-185.8 185.9-7.3 65.3 65.3-7.3zm64.8-79.7-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0l-30.9 30.9 58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z" />
@@ -119,7 +123,8 @@ function TodoList({ todos, setTodos }) {
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="h-6 w-6  box-border cursor-pointer "
+                className="h-6 w-6  box-border cursor-pointer stroke-slate-800
+"
                 onClick={() => handleDeleteClick(todo.id)}
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -198,9 +203,8 @@ function TodoList({ todos, setTodos }) {
 
 export default TodoList;
 
-
-
-{/* <svg
+{
+  /* <svg
                 width="24"
                 height="24"
                 strokeWidth="1.5"
@@ -227,4 +231,5 @@ export default TodoList;
                   d="m12 2a10 10 0 1 0 10 10 10 10 0 0 0 -10-10zm4.3 7.61-4.57 6a1 1 0 0 1 -.79.39 1 1 0 0 1 -.79-.38l-2.44-3.11a1 1 0 0 1 1.58-1.23l1.63 2.08 3.78-5a1 1 0 1 1 1.6 1.22z"
                   fill="#EFB036"
                 />
-              </svg> */}
+              </svg> */
+}
