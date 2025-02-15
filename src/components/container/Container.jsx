@@ -2,9 +2,9 @@
 
 function Container({children}) {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <main className="sm:w-md flex flex-col bg-white p-10 gap-5 rounded-xl h-fit w-sm">
        {children}
-    </div>
+    </main>
   )
 }
 

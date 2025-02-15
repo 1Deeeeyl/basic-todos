@@ -3,6 +3,7 @@ import Title from "./components/title/Title";
 import TodoForm from "./components/todoForm/TodoForm";
 import TodoList from "./components/todoList/TodoList";
 import { useState } from "react";
+import Wrapper from "./components/wrapper/Wrapper";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -17,11 +18,13 @@ function App() {
   };
 
   return (
-    <Container>
-      <Title />
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} setTodos={setTodos} />
-    </Container>
+    <Wrapper>
+      <Container>
+        <Title />
+        <TodoForm addTodo={addTodo} />
+        <TodoList todos={todos} setTodos={setTodos} />
+      </Container>
+    </Wrapper>
   );
 }
 

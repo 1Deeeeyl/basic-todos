@@ -20,7 +20,7 @@ function TodoList({ todos, setTodos }) {
   const handleEditClick = (todo) => {
     setModalType("edit");
     setTodoEdit(todo);
-    setEditedText(todo.text); // Set initial text in input
+    setEditedText(todo.text);
     setOpen(true);
   };
 
@@ -50,46 +50,46 @@ function TodoList({ todos, setTodos }) {
 
   return (
     <>
-      <ul>
+      <ul className="flex flex-col gap-2 ">
         {todos.map((todo) => (
           <div
             key={todo.id}
-            className="flex flex-row items-center justify-between"
+            className="flex flex-row items-center justify-between bg-gray-200 h-fit p-3 w-full rounded-md"
           >
             <li
-              onClick={() => handleTask(todo.id)} // Pass id to track the clicked todo
-              className={`${todo.isDone ? "line-through font-bold" : ""}`}
+              onClick={() => handleTask(todo.id)}
+              className={`${
+                todo.isDone ? "max-w-[20ch] cursor-pointer break-words line-through font-bold" : "max-w-[20ch] cursor-pointer break-words"
+              }`}
             >
               {todo.text}
             </li>
-            <span className="flex-row flex">
+            <span className="flex-row flex items-center gap-3">
+              
               <svg
-                width="800px"
-                height="800px"
-                viewBox="0 0 24 24"
-                fill="none"
+                viewBox="0 0 576 512"
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-9 w-9 box-border"
+                className="h-5 w-5 box-border cursor-pointer"
                 onClick={() => handleEditClick(todo)}
               >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="m3.99 16.854-1.314 3.504a.75.75 0 0 0 .966.965l3.503-1.314a3 3 0 0 0 1.068-.687L18.36 9.175s-.354-1.061-1.414-2.122c-1.06-1.06-2.122-1.414-2.122-1.414L4.677 15.786a3 3 0 0 0-.687 1.068zm12.249-12.63 1.383-1.383c.248-.248.579-.406.925-.348.487.08 1.232.322 1.934 1.025.703.703.945 1.447 1.025 1.934.058.346-.1.677-.348.925L19.774 7.76s-.353-1.06-1.414-2.12c-1.06-1.062-2.121-1.415-2.121-1.415z"
-                  fill="#000000"
-                />
+                <path d="m402.3 344.9 32-32c5-5 13.7-1.5 13.7 5.7v145.4c0 26.5-21.5 48-48 48h-352c-26.5 0-48-21.5-48-48v-352c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3h-241.5v352h352v-113.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8-262.6 262.6-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4 262.6-262.6c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zm-98.8 30.9-58.1-58.1-185.8 185.9-7.3 65.3 65.3-7.3zm64.8-79.7-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0l-30.9 30.9 58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z" />
               </svg>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="100"
-                height="100"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
-                className="h-9 w-9 fill-red-600 box-border"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-6 w-6  box-border cursor-pointer "
                 onClick={() => handleDeleteClick(todo.id)}
               >
-                <path d="M 10 2 L 9 3 L 5 3 C 4.4 3 4 3.4 4 4 C 4 4.6 4.4 5 5 5 L 7 5 L 17 5 L 19 5 C 19.6 5 20 4.6 20 4 C 20 3.4 19.6 3 19 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 20 C 5 21.1 5.9 22 7 22 L 17 22 C 18.1 22 19 21.1 19 20 L 19 7 L 5 7 z M 9 9 C 9.6 9 10 9.4 10 10 L 10 19 C 10 19.6 9.6 20 9 20 C 8.4 20 8 19.6 8 19 L 8 10 C 8 9.4 8.4 9 9 9 z M 15 9 C 15.6 9 16 9.4 16 10 L 16 19 C 16 19.6 15.6 20 15 20 C 14.4 20 14 19.6 14 19 L 14 10 C 14 9.4 14.4 9 15 9 z"></path>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <rect x="4" y="4" width="16" height="16" rx="2" />
+                <path d="M10 10l4 4m0 -4l-4 4" />
               </svg>
             </span>
           </div>
@@ -110,11 +110,11 @@ function TodoList({ todos, setTodos }) {
               <path d="M 10 2 L 9 3 L 5 3 C 4.4 3 4 3.4 4 4 C 4 4.6 4.4 5 5 5 L 7 5 L 17 5 L 19 5 C 19.6 5 20 4.6 20 4 C 20 3.4 19.6 3 19 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 20 C 5 21.1 5.9 22 7 22 L 17 22 C 18.1 22 19 21.1 19 20 L 19 7 L 5 7 z M 9 9 C 9.6 9 10 9.4 10 10 L 10 19 C 10 19.6 9.6 20 9 20 C 8.4 20 8 19.6 8 19 L 8 10 C 8 9.4 8.4 9 9 9 z M 15 9 C 15.6 9 16 9.4 16 10 L 16 19 C 16 19.6 15.6 20 15 20 C 14.4 20 14 19.6 14 19 L 14 10 C 14 9.4 14.4 9 15 9 z"></path>
             </svg>
             <h3 className="mt-[10px] font-bold text-xl">Confirm Delete</h3>
-            <p>Are you sure you want to delete this item?</p>
+            <p>Are you sure you want to delete<br/>this item?</p>
             <span className="flex flex-row gap-5 mt-[15px]">
               <button
                 onClick={confirmDelete}
-                className="bg-red-600 text-white p-3 rounded-md"
+                className="bg-red-600 text-white p-3 rounded-md cursor-pointer"
               >
                 CONFIRM
               </button>
@@ -133,13 +133,13 @@ function TodoList({ todos, setTodos }) {
               type="text"
               value={editedText}
               onChange={(e) => setEditedText(e.target.value)}
-              className="rounded-lg border border-slate-500 p-2 focus:outline-orange-300 mt-[15px]"
-
+              className="rounded-lg border border-slate-500 p-2 focus:outline-[#EFB036] mt-[15px]"
+              onKeyDown={(e) => e.key === "Enter" && confirmEdit()}
             />
             <span className="flex flex-row gap-5 mt-[15px]">
               <button
                 onClick={confirmEdit}
-                className="bg-emerald-600 text-white p-3 rounded-md"
+                className="bg-emerald-600 text-white p-3 rounded-md cursor-pointer"
               >
                 SAVE
               </button>
