@@ -25,6 +25,10 @@ function TodoList({ todos, setTodos }) {
   };
 
   const confirmEdit = () => {
+    if (!editedText.trim()) {
+      alert("You can't leave that blank!");
+      return;
+    }
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
         todo.id === todoEdit.id ? { ...todo, text: editedText } : todo
@@ -56,16 +60,47 @@ function TodoList({ todos, setTodos }) {
             key={todo.id}
             className="flex flex-row items-center justify-between bg-gray-200 h-fit p-3 w-full rounded-md"
           >
-            <li
-              onClick={() => handleTask(todo.id)}
-              className={`${
-                todo.isDone ? "max-w-[20ch] cursor-pointer break-words line-through font-bold" : "max-w-[20ch] cursor-pointer break-words"
-              }`}
-            >
-              {todo.text}
-            </li>
+            <span className="flex flex-row gap-5 items-center">
+              {todo.isDone ?  <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 cursor-pointer"
+                onClick={() => handleTask(todo.id)}
+              >
+                <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" />
+                <path
+                  d="m12 2a10 10 0 1 0 10 10 10 10 0 0 0 -10-10zm4.3 7.61-4.57 6a1 1 0 0 1 -.79.39 1 1 0 0 1 -.79-.38l-2.44-3.11a1 1 0 0 1 1.58-1.23l1.63 2.08 3.78-5a1 1 0 1 1 1.6 1.22z"
+                  fill="#EFB036"
+                />
+              </svg>: <svg
+                width="24"
+                height="24"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5 cursor-pointer"
+                onClick={() => handleTask(todo.id)}
+              >
+                <path
+                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>}
+              <li
+                onClick={() => handleTask(todo.id)}
+                className={`${
+                  todo.isDone
+                    ? "sm:max-w-[20ch] cursor-pointer break-words line-through max-w-[15ch] text-black/50 decoration-black"
+                    : "sm:max-w-[20ch] cursor-pointer break-words max-w-[15ch]"
+                }`}
+              >
+                {todo.text}
+              </li>
+            </span>
             <span className="flex-row flex items-center gap-3">
-              
               <svg
                 viewBox="0 0 576 512"
                 xmlns="http://www.w3.org/2000/svg"
@@ -105,16 +140,20 @@ function TodoList({ todos, setTodos }) {
               width="100"
               height="100"
               viewBox="0 0 24 24"
-              className="h-12 w-12 fill-red-600 box-border"
+              className="h-12 w-12 fill-[#B82132] box-border"
             >
               <path d="M 10 2 L 9 3 L 5 3 C 4.4 3 4 3.4 4 4 C 4 4.6 4.4 5 5 5 L 7 5 L 17 5 L 19 5 C 19.6 5 20 4.6 20 4 C 20 3.4 19.6 3 19 3 L 15 3 L 14 2 L 10 2 z M 5 7 L 5 20 C 5 21.1 5.9 22 7 22 L 17 22 C 18.1 22 19 21.1 19 20 L 19 7 L 5 7 z M 9 9 C 9.6 9 10 9.4 10 10 L 10 19 C 10 19.6 9.6 20 9 20 C 8.4 20 8 19.6 8 19 L 8 10 C 8 9.4 8.4 9 9 9 z M 15 9 C 15.6 9 16 9.4 16 10 L 16 19 C 16 19.6 15.6 20 15 20 C 14.4 20 14 19.6 14 19 L 14 10 C 14 9.4 14.4 9 15 9 z"></path>
             </svg>
             <h3 className="mt-[10px] font-bold text-xl">Confirm Delete</h3>
-            <p>Are you sure you want to delete<br/>this item?</p>
+            <p>
+              Are you sure you want to delete
+              <br />
+              this item?
+            </p>
             <span className="flex flex-row gap-5 mt-[15px]">
               <button
                 onClick={confirmDelete}
-                className="bg-red-600 text-white p-3 rounded-md cursor-pointer"
+                className="bg-[#B82132] text-white p-3 rounded-md cursor-pointer"
               >
                 CONFIRM
               </button>
@@ -139,7 +178,7 @@ function TodoList({ todos, setTodos }) {
             <span className="flex flex-row gap-5 mt-[15px]">
               <button
                 onClick={confirmEdit}
-                className="bg-emerald-600 text-white p-3 rounded-md cursor-pointer"
+                className="bg-[#3D8D7A] text-white p-3 rounded-md cursor-pointer"
               >
                 SAVE
               </button>
@@ -158,3 +197,34 @@ function TodoList({ todos, setTodos }) {
 }
 
 export default TodoList;
+
+
+
+{/* <svg
+                width="24"
+                height="24"
+                strokeWidth="1.5"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+              >
+                <path
+                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+              >
+                <path d="m0 0h24v24h-24z" fill="#fff" opacity="0" />
+                <path
+                  d="m12 2a10 10 0 1 0 10 10 10 10 0 0 0 -10-10zm4.3 7.61-4.57 6a1 1 0 0 1 -.79.39 1 1 0 0 1 -.79-.38l-2.44-3.11a1 1 0 0 1 1.58-1.23l1.63 2.08 3.78-5a1 1 0 1 1 1.6 1.22z"
+                  fill="#EFB036"
+                />
+              </svg> */}
