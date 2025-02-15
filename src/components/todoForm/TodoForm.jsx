@@ -28,25 +28,28 @@ function TodoForm({ addTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center rounded-full overflow-hidden  bg-gray-200 w-full justify-between ">
-  {/* Left (Gray) Section: Input */}
-  <input
-    type="text"
-    placeholder="Add your task"
-    value={input}
-    onChange={handleChange}
-    className=" px-4 py-4 focus:outline-none text-gray-700"
-  />
+    <form
+      onSubmit={handleSubmit}
+      className="flex items-center rounded-full overflow-hidden  bg-gray-200 w-full justify-between "
+    >
+      {/* Left (Gray) Section: Input */}
+      <input
+        type="text"
+        placeholder="Add your task"
+        value={input}
+        onChange={handleChange}
+        className=" px-4 py-4 focus:outline-none text-gray-700 sm:w-[25ch] w-[20ch]"
+      />
 
-  {/* Right (Red) Section: Button */}
-  <button
-    type="submit"
-    className="bg-[#EFB036] text-white px-8 py-4 font-semibold rounded-full text-center"
-  >
-    ADD
-  </button>
-</form>
-
+      {/* Right (Red) Section: Button */}
+      <button
+        type="submit"
+        className="bg-[#EFB036] text-white
+   px-8 py-4 font-semibold rounded-full text-center"
+      >
+        ADD
+      </button>
+    </form>
   );
 }
 
