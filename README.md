@@ -50,7 +50,7 @@
 
 <h2 style="margin-top: 25px">How To Use</h2>
 <p>
-  If you'd like to fork this and use it for your own portfolio, feel free to do so! Just be sure to give proper credit. Below are the steps to set it up:
+  If you'd like to fork this and use it for your own, feel free to do so! Just be sure to give proper credit. Below are the steps to set it up:
 </p>
 
 <h3>Installation</h3>
